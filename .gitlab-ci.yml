@@ -1,0 +1,16 @@
+image: node:latest
+
+cache:
+  paths:
+  - ~/.npm/
+
+pages:
+  stage: deploy
+  artifacts:
+    paths:
+     - public
+  only:
+    - master
+  script:
+   - npm install -g apidoc
+   - apidoc -i app/Http/Controllers -o public
